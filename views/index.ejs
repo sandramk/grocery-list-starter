@@ -1,24 +1,13 @@
 <ul>
-  <% tasks.forEach(function(task)) { %>
+  <% tasks.forEach(function(task) { %>
     <li><%= task.text %> </li>
   <% }) %>
 </ul>
 
-/* POST route to create a new task */
-app.post('/tasks', (req, res, next) => {
-  var task =  new TaskModel({
-    text : req.body.text
-  });
-
-  task.save((err, task) => {
-    res.redirect('/');
-  });
-});
-
 <form action="/tasks" method="post">
-  <input type="text">
-  <input type="submit" value="name">
-  <input type="submit" value="quantity">
+  <input type="text" placeholder="quantity" value="quantity">
+  <input type="text" placholder="name" value="name">
+  <input type="submit" value="Add Item">
 </form>
 
 <ul>
