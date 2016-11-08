@@ -1,9 +1,3 @@
-<ul>
-  <% tasks.forEach(function(task) { %>
-    <li><%= task.text %> </li>
-  <% }) %>
-</ul>
-
 <form action="/tasks" method="post">
   <input type="text" placeholder="quantity" value="quantity">
   <input type="text" placholder="name" value="name">
@@ -11,7 +5,7 @@
 </form>
 
 <ul>
-  <% tasks.forEach(function(task)) { %>
+  <% tasks.forEach(function(task) { %>
     <li><%= task.text %></li>
   <% }) %>
 </ul>

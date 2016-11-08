@@ -6,10 +6,10 @@ const app = express();
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/task-list');
 
-
+const taskRoutes = require('./routes/tasks');
 
 app.use(bodyParser.json());
-
+app.use('/tasks', taskRoutes);
 
 
 const port = 3001;
