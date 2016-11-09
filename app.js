@@ -4,12 +4,15 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/task-list');
+mongoose.connect('mongodb://localhost/grocery-list');
 
-const taskRoutes = require('./routes/tasks');
+const listRoutes = require('./routes/list');
 
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
-app.use('/tasks', taskRoutes);
+app.use('/list', listRoutes);
 
 
 const port = 3001;
