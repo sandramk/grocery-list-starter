@@ -1,4 +1,11 @@
-<form action="/list" method="post">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Grocery List</title>
+    </head>
+<body>
+  <form action="/list" method="post">
   <input type="text" placeholder="name" name="text">
   <input type="text" placeholder="quantity" name="quantity">
   <input type="submit" value="Add Item">
@@ -9,3 +16,5 @@
     <li><%= item.text %> - <%= item.quantity %></li>
   <% }) %>
 </ul>
+</body>
+</html>

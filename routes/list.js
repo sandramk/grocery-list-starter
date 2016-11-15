@@ -1,33 +1,22 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 // GET /list
-const GroceryModel = require('../models/GroceryModel.js');
+var GroceryController = require('../controllers/GroceryController.js');
+
 /* GET home page */
-// /list/
-// router.get('/list/')
-router.get('/', (req, res, next) => {
-//mongoose find GroceryModels
-//mongoose will find all list - didn't pass a specific attribute
-  GroceryModel.find((err, groceries) => {
-    res.render('index.ejs', {
-      groceriesRendered: groceries
-    });
-  });
-});
+router.get('/', GroceryController.list);
 
-/* POST Create a saveList. */
-// /list/
-router.post('/', (req, res, next) => {
-  var saveList = new GroceryModel({
-        text : req.body.text,
-        quantity : req.body.quantity
-  });
+/* GET return one grocery item from ID in url*/
+router.get('/:id', GroceryController.show);
 
-  saveList.save((err, saveList) => {
-        // Inserts are run asynchronously.
-        // So we have to pass in a callback to be ran when the insert is finished
-    res.redirect('/list');
-  });
-});
+/* POST Create a new grocery item. */
+router.post('/', GroceryController.create);
+
+/* PUT update a single grocery item from id in url */
+router.put('/:id', GroceryController.update);
+
+/* DELETE delete a groceryItem from id in url */
+router.delete('/:id', GroceryController.remove);
+
 
 module.exports = router;
